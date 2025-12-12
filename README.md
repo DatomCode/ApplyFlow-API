@@ -36,8 +36,8 @@ A powerful RESTful API built with **Django** and **Django REST Framework (DRF)**
 
 The database consists of three main entities: **Users**, **Job Applications**, and **Interaction Notes**.
 
-![ER Diagram](path/to/your/erd_image.jpg)
-*(Replace this path with the actual link to your uploaded ERD image)*
+ER Diagram :(https://drive.google.com/file/d/1I0wcaV_j4s-tDD_u-n2JzU67pqdFvKey/view?usp=drive_link)
+
 
 
 
@@ -92,11 +92,13 @@ Visit `http://127.0.0.1:8000/` in your browser to verify it's running!
 
 ### 🔐 Authentication
 | Method | Endpoint | Description |
+| :--- | :--- | :--- |
 | `POST` | `/api/auth/register/` | Register a new user |
 | `POST` | `/api/auth/login/` | Login and get token |
 
 ### 💼 Job Applications
 | Method | Endpoint | Description |
+| :--- | :--- | :--- |
 | `GET` | `/api/jobs/` | List all job applications |
 | `POST` | `/api/jobs/` | Create a new application |
 | `GET` | `/api/jobs/<id>/` | Get details of one job |
@@ -105,6 +107,7 @@ Visit `http://127.0.0.1:8000/` in your browser to verify it's running!
 
 ### 📝 Notes
 | Method | Endpoint | Description |
+| :--- | :--- | :--- |
 | `GET` | `/api/jobs/<id>/notes/` | Get notes for a specific job |
 | `POST` | `/api/jobs/<id>/notes/` | Create a note for a specific job |
 
@@ -118,6 +121,6 @@ Visit `http://127.0.0.1:8000/` in your browser to verify it's running!
 
 
 ## 👤 Author
-**[Gbadebo Enoch]**
+**Gbadebo Enoch**
 - LinkedIn: https://www.linkedin.com/in/gbadeboenoch/
 - GitHub: https://github.com/DatomCode
