@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from authentication_module.serializers import UserRegistrationSerializer
+from authentication_module.serializers import UserRegistrationSerializer, JobApplicationSerializer
+from . models import JobApplication
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, viewsets,permissions
 from rest_framework.decorators import api_view
 
 # Create your views here.
@@ -15,3 +16,13 @@ def register_user(request):
         serializer.save()
         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class JobApplicationViewSet(viewsets.ModelViewSet):
+    serializer_class = JobApplicationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return JobApplication.objects.filter(user= self.request.user)
+    
+    def perform_create(self, serializer):
+        serializer.save(user= self.request.user)

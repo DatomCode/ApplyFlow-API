@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
+from . models import JobApplication, InteractionNote
+
 class UserRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
@@ -24,3 +26,22 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         new_user.set_password(password)
         new_user.save()
         return new_user
+    
+
+class InteractionNoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = InteractionNote
+        fields =["job","content","created_at"]
+
+        read_only_fields =["job"]
+
+
+class JobApplicationSerializer(serializers.ModelSerializer):
+
+    notes = InteractionNoteSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = JobApplication
+        fields = ["user", "id", "company_name", "job_title", "status","application_date", "job_url", "created_at", "notes"]
+
+        read_only_fields =["user"]
