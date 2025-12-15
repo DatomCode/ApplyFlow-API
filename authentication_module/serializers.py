@@ -31,9 +31,9 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 class InteractionNoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = InteractionNote
-        fields =["job","content","created_at"]
+        fields =["id","job","content","created_at"]
 
-        read_only_fields =["job"]
+        read_only_fields =[]
 
 
 class JobApplicationSerializer(serializers.ModelSerializer):

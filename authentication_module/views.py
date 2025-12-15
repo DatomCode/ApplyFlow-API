@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from authentication_module.serializers import UserRegistrationSerializer, JobApplicationSerializer
-from . models import JobApplication
+from authentication_module.serializers import UserRegistrationSerializer, JobApplicationSerializer, InteractionNoteSerializer
+from . models import JobApplication, InteractionNote
 from rest_framework.response import Response
 from rest_framework import status, viewsets,permissions
 from rest_framework.decorators import api_view
@@ -26,3 +26,13 @@ class JobApplicationViewSet(viewsets.ModelViewSet):
     
     def perform_create(self, serializer):
         serializer.save(user= self.request.user)
+
+
+class InteractionNoteViewSet(viewsets.ModelViewSet):
+    serializer_class = InteractionNoteSerializer
+
+    permission_classes = [permissions.IsAuthenticated]
+
+
+    def get_queryset(self):
+        return InteractionNote.objects.filter(job__user= self.request.user)
