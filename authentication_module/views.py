@@ -2,7 +2,8 @@ from django.shortcuts import render
 from authentication_module.serializers import UserRegistrationSerializer, JobApplicationSerializer, InteractionNoteSerializer
 from . models import JobApplication, InteractionNote
 from rest_framework.response import Response
-from rest_framework import status, viewsets,permissions
+from rest_framework import status, viewsets,permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import api_view
 
 # Create your views here.
@@ -20,6 +21,12 @@ def register_user(request):
 class JobApplicationViewSet(viewsets.ModelViewSet):
     serializer_class = JobApplicationSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+
+    search_fields = ['company_name', 'job_title']
+
+    filterset_fields = ['status', 'company_name']
 
     def get_queryset(self):
         return JobApplication.objects.filter(user= self.request.user)
