@@ -9,12 +9,11 @@ router.register('jobs', JobApplicationViewSet, basename="jobs")
 router.register('notes', InteractionNoteViewSet, basename='notes')
 
 urlpatterns = [
-    path('register-user', register_user, name="register-user" ),
-    path('', include(router.urls)),
-    # NEW: The Login Endpoint (Get your Token here)
-    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('auth/register', register_user, name="register-user" ),
+    path('auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     
-    # NEW: Refresh Token Endpoint (Optional, but good practice)
+    path('', include(router.urls)),
+    
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
 ]

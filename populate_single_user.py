@@ -43,7 +43,7 @@ def run_simulation():
 
     #Register (Skip if they already exist)
     print(f"... Checking registration for {target_user['username']}")
-    reg_resp = requests.post(f"{BASE_URL}/register-user/", json=target_user)
+    reg_resp = requests.post(f"{BASE_URL}/api/auth/register/", json=target_user)
     
     if reg_resp.status_code == 201:
         print("User created successfully.")
@@ -53,7 +53,7 @@ def run_simulation():
         print(f"Registration Warning: {reg_resp.text}")
 
     #Login to get Token
-    resp = requests.post(f"{BASE_URL}/login/", json=target_user)
+    resp = requests.post(f"{BASE_URL}/api/auth/login/", json=target_user)
     if resp.status_code != 200:
         print(f"FATAL: Could not login {target_user['username']}")
         print(f"Server said: {resp.text}")
@@ -71,7 +71,7 @@ def run_simulation():
         # Add the required date
         job['application_date'] = "2025-12-16"
         
-        r = requests.post(f"{BASE_URL}/jobs/", json=job, headers=headers)
+        r = requests.post(f"{BASE_URL}/api/jobs/", json=job, headers=headers)
         
         if r.status_code == 201:
             print(f" Added: {job['company_name']}")
