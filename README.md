@@ -96,27 +96,27 @@ Visit `http://127.0.0.1:8000/` in your browser to verify it's running!
 | `POST` | `/api/auth/register/` | Register a new user |
 | `POST` | `/api/auth/login/` | Login and get token |
 
-### 💼 Job Applications
+### 🔍 Filtering & Search
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
-| `GET` | `/api/jobs/` | List all job applications |
-| `POST` | `/api/jobs/` | Create a new application |
-| `GET` | `/api/jobs/<id>/` | Get details of one job |
-| `PUT` | `/api/jobs/<id>/` | Update job details |
-| `DELETE` | `/api/jobs/<id>/` | Delete a job application |
+| `GET` | `/api/jobs/?search=Google` | Search for "Google" in Company/Title |
+| `GET` | `/api/jobs/?status=Rejected` | Filter jobs by status |
+| `GET` | `/api/jobs/?status=Applied&search=Python` | **Combo:** Search + Filter together |
+| `GET` | `/api/notes/?search=interview` | Search text inside your notes |
 
 ### 📝 Notes
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
-| `GET` | `/api/jobs/<id>/notes/` | Get notes for a specific job |
-| `POST` | `/api/jobs/<id>/notes/` | Create a note for a specific job |
+| `GET` | `/api/notes/` | List all notes |
+| `POST` | `/api/notes/` | Create a note (Link to Job ID in body) |
+| `GET` | `/api/notes/<id>/` | Get details of a specific note |
 
 
 
 ## 🔮 Future Improvements
-* Add filtering by job status (e.g., `?status=Interviewing`).
-* Integrate an external API to fetch real job listings.
-* Email notifications for upcoming interviews.
+* Integrate an external API (like LinkedIn or Indeed) to fetch real job listings.
+* Add email notifications for upcoming scheduled interviews.
+* Build a Frontend Dashboard using React or Vue.js.
 
 
 

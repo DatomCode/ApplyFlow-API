@@ -1,11 +1,8 @@
 import requests
 
-# ⚠️ CHECK YOUR PORT: Your last error showed port 8003. 
-# If you are on 8000, change this to http://127.0.0.1:8000
 BASE_URL = "http://127.0.0.1:8003" 
 
 #THE TARGET USER (Who gets all the jobs?)
-# You can change this to your main admin account if you want.
 target_user = {
     "username": "ApplyFlow-Admin", 
     "password": "damilare007", 
@@ -14,13 +11,8 @@ target_user = {
     "last_name": "flow"
 }
 
-# 2. THE DATA (20 Jobs)
+# 2. THE DATA (48 Jobs)
 all_jobs = [
-  { "company_name": "Google", "job_title": "Backend Engineer", "status": "Applied", "job_url": "https://careers.google.com" },
-  { "company_name": "Netflix", "job_title": "Senior Python Developer", "status": "Interviewing", "job_url": "https://jobs.netflix.com" },
-  { "company_name": "Amazon", "job_title": "SDE I", "status": "Rejected", "job_url": "https://amazon.jobs" },
-  { "company_name": "Meta", "job_title": "DevOps Engineer", "status": "Applied", "job_url": "https://metacareers.com" },
-  { "company_name": "Spotify", "job_title": "Backend Developer", "status": "Offer", "job_url": "http://spotify.com" },
   { "company_name": "Tesla", "job_title": "Autopilot Engineer", "status": "Applied", "job_url": "https://tesla.com" },
   { "company_name": "Microsoft", "job_title": "Cloud Architect", "status": "Interviewing", "job_url": "https://microsoft.com" },
   { "company_name": "Airbnb", "job_title": "Full Stack Dev", "status": "Applied", "job_url": "https://airbnb.com" },
@@ -35,7 +27,38 @@ all_jobs = [
   { "company_name": "Dropbox", "job_title": "Cloud Engineer", "status": "Applied", "job_url": "https://dropbox.com" },
   { "company_name": "Pinterest", "job_title": "ML Engineer", "status": "Rejected", "job_url": "https://pinterest.com" },
   { "company_name": "Reddit", "job_title": "Data Engineer", "status": "Applied", "job_url": "https://reddit.com" },
-  { "company_name": "Zoom", "job_title": "VoIP Engineer", "status": "Interviewing", "job_url": "https://zoom.us" }
+  { "company_name": "Zoom", "job_title": "VoIP Engineer", "status": "Interviewing", "job_url": "https://zoom.us" },
+
+#New 28 jobs data
+
+  { "company_name": "Adobe", "job_title": "UX Engineer", "status": "Applied", "job_url": "https://adobe.com/careers" },
+  { "company_name": "Salesforce", "job_title": "CRM Developer", "status": "Interviewing", "job_url": "https://salesforce.com/jobs" },
+  { "company_name": "Oracle", "job_title": "Database Admin", "status": "Rejected", "job_url": "https://oracle.com/careers" },
+  { "company_name": "IBM", "job_title": "Cloud Consultant", "status": "Applied", "job_url": "https://ibm.com/jobs" },
+  { "company_name": "Intel", "job_title": "Hardware Engineer", "status": "Offer", "job_url": "https://intel.com/jobs" },
+  { "company_name": "AMD", "job_title": "Chip Architect", "status": "Applied", "job_url": "https://amd.com/careers" },
+  { "company_name": "Nvidia", "job_title": "AI Researcher", "status": "Interviewing", "job_url": "https://nvidia.com/careers" },
+  { "company_name": "SpaceX", "job_title": "Flight Software Eng", "status": "Applied", "job_url": "https://spacex.com/careers" },
+  { "company_name": "Blue Origin", "job_title": "Propulsion Engineer", "status": "Rejected", "job_url": "https://blueorigin.com" },
+  { "company_name": "NASA", "job_title": "Data Scientist", "status": "Applied", "job_url": "https://nasa.gov/careers" },
+  { "company_name": "Goldman Sachs", "job_title": "Quant Analyst", "status": "Interviewing", "job_url": "https://goldmansachs.com" },
+  { "company_name": "JP Morgan", "job_title": "Java Developer", "status": "Offer", "job_url": "https://jpmorgan.com/careers" },
+  { "company_name": "Morgan Stanley", "job_title": "Cyber Security", "status": "Applied", "job_url": "https://morganstanley.com" },
+  { "company_name": "Bank of America", "job_title": "Full Stack Dev", "status": "Rejected", "job_url": "https://bankofamerica.com" },
+  { "company_name": "Citi", "job_title": "DevOps Engineer", "status": "Applied", "job_url": "https://citi.com/careers" },
+  { "company_name": "Wells Fargo", "job_title": "System Admin", "status": "Interviewing", "job_url": "https://wellsfargo.com" },
+  { "company_name": "Visa", "job_title": "Payment Engineer", "status": "Applied", "job_url": "https://visa.com/careers" },
+  { "company_name": "Mastercard", "job_title": "Blockchain Lead", "status": "Offer", "job_url": "https://mastercard.com" },
+  { "company_name": "PayPal", "job_title": "iOS Developer", "status": "Applied", "job_url": "https://paypal.com/jobs" },
+  { "company_name": "Square", "job_title": "Android Developer", "status": "Interviewing", "job_url": "https://squareup.com" },
+  { "company_name": "Shopify", "job_title": "Ruby Developer", "status": "Applied", "job_url": "https://shopify.com/careers" },
+  { "company_name": "Atlassian", "job_title": "Jira Admin", "status": "Rejected", "job_url": "https://atlassian.com" },
+  { "company_name": "Asana", "job_title": "Frontend Engineer", "status": "Applied", "job_url": "https://asana.com/jobs" },
+  { "company_name": "Trello", "job_title": "Backend Engineer", "status": "Applied", "job_url": "https://trello.com/jobs" },
+  { "company_name": "Notion", "job_title": "Full Stack Lead", "status": "Interviewing", "job_url": "https://notion.so/jobs" },
+  { "company_name": "Linear", "job_title": "React Developer", "status": "Offer", "job_url": "https://linear.app/careers" },
+  { "company_name": "Vercel", "job_title": "Next.js Engineer", "status": "Applied", "job_url": "https://vercel.com/careers" },
+  { "company_name": "Heroku", "job_title": "Platform Engineer", "status": "Rejected", "job_url": "https://heroku.com/careers" },
 ]
 
 def run_simulation():
